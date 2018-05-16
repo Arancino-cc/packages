@@ -9,7 +9,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=pandas
 PKG_VERSION:=0.21.0
-PKG_RELEASE:=1
+PKG_RELEASE:=2
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://pypi.python.org/packages/84/4c/622301f99725c6da76ae8079cb6b9091d9098098bd6b4eac47fb502b32f4/
@@ -28,7 +28,7 @@ define Package/python3-$(PKG_NAME)
   CATEGORY:=Languages
   TITLE:=python3-pandas
   URL:=http://pandas.pydata.org
-  DEPENDS:=+python3 +python3-numpy/host +python3-numpy +python3-dateutil +python3-pytz +libstdcpp
+  DEPENDS:=+python3 +python3-numpy +python3-dateutil +python3-pytz +libstdcpp
 endef
 
 define Package/python3-$(PKG_NAME)/description
