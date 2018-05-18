@@ -7,31 +7,39 @@
 
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=nose
-PKG_VERSION:=1.3.7
+PKG_NAME:=Cython
 PKG_RELEASE:=1
 
-PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://files.pythonhosted.org/packages/58/a5/0dc93c3ec33f4e281849523a5a913fa1eea9a3068acfa754d44d88107a44
-PKG_MD5SUM:=f1bffef9cbc82628f6e7d7b40d7e255aefaa1adb6a1b1d26c69a8b79e6208a98
+PKG_VERSION:=0.28.2
+PKG_SOURCE_URL:=https://files.pythonhosted.org/packages/79/9d/dea8c5181cdb77d32e20a44dd5346b0e4bac23c4858f2f66ad64bbcf4de8
+PKG_MD5SUM:=634e2f10fc8d026c633cffacb45cd8f4582149fa68e1428124e762dbc566e68a
+
+PKG_SOURCE:=Cython-$(PKG_VERSION).tar.gz
+PKG_BUILD_DIR:=$(BUILD_DIR)/Cython-$(PKG_VERSION)
+HOST_PKG_BUILD_DIR:=$(BUILD_DIR)/Cython-$(PKG_VERSION)
+
+HOST_PYTHON3_PACKAGE_BUILD_DEPENDS:="dev"
 
 include $(INCLUDE_DIR)/host-build.mk
 include $(INCLUDE_DIR)/package.mk
-include $(TOPDIR)/feeds/packages/lang/python/python-host.mk
+include $(TOPDIR)/feeds/packages/lang/python/python3-host.mk
 include $(TOPDIR)/feeds/packages/lang/python/python3-package.mk
-
 
 define Package/python3-$(PKG_NAME)
   SUBMENU:=Python
   SECTION:=lang
   CATEGORY:=Languages
-  TITLE:=python3-nose
-  URL:=http://readthedocs.org/docs/nose/
+  TITLE:=python3-numpy
+  URL:=http://www.numpy.org
   DEPENDS:=+python3
 endef
 
 define Package/python3-$(PKG_NAME)/description
-  Nose extends the test loading and running features of unittest, making it easier to write, find and run tests.
+  NumPy is the fundamental package for scientific computing with Python.
+endef
+
+define PyPackage/python3-$(PKG_NAME)/filespec
++|$(PYTHON_PKG_DIR)
 endef
 
 define Build/Compile
