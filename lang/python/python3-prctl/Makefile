@@ -7,12 +7,12 @@
 
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=python-prctl
+PKG_NAME:=prctl
 PKG_VERSION:=1.7
 PKG_RELEASE:=1
 PKG_LICENSE:=BSD-2-Clause
 
-PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
+PKG_SOURCE:=python-$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://files.pythonhosted.org/packages/7a/90/61935e2530a76f41e9e4f8ba0fe073d4ad0a3e16c4953156253f939fb057
 PKG_MD5SUM:=57ebd556616d6ffe1f794f514680e84a03737cb070de37722198d7ad6c8f4fda
 PKG_BUILD_DEPENDS:=libcap
