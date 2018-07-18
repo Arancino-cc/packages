@@ -7,14 +7,14 @@
 
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=influx-client
-PKG_VERSION:=1.4.1
+PKG_NAME:=influxdb
+PKG_VERSION:=5.2.0
 PKG_RELEASE:=1
 PKG_LICENSE:=BSD-2-Clause
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://files.pythonhosted.org/packages/c6/ad/bac272229274918d65668ddd932d8cfbfcade3e66c4d0448a58397ed6aa8/
-PKG_MD5SUM:=ab7456f768de391a7c75c28762d4226dfc88eebc08b66d92b57269eee2964797
+PKG_SOURCE_URL:=https://files.pythonhosted.org/packages/62/ff/f3927023d5ef2ee4156a54ff87757eaff1f630aed6c0c4fbd1c1413bfb88
+PKG_MD5SUM:=3ba558432d4c64293ada0deccf76527777e76750e99176d3b9dbc5a72bd4163b
 
 PKG_UNPACK=$(HOST_TAR) -C $(PKG_BUILD_DIR) --strip-components=1 -xzf $(DL_DIR)/$(PKG_SOURCE)
 HOST_UNPACK=$(HOST_TAR) -C $(HOST_BUILD_DIR) --strip-components=1 -xzf $(DL_DIR)/$(PKG_SOURCE)
@@ -27,13 +27,13 @@ define Package/python3-$(PKG_NAME)
   SUBMENU:=Python
   SECTION:=lang
   CATEGORY:=Languages
-  TITLE:=python3-influx-client
-  URL:=https://github.com/AxiomExergy/influx-client/
+  TITLE:=python3-influxdb
+  URL:=https://github.com/influxdata/influxdb-python
   DEPENDS:=+python3
 endef
 
 define Package/python3-$(PKG_NAME)/description
-InfluxDB client compatible with 1.5. This client uses the awesome requests library to provide connection pooling for each unique InfluxDB URL given.
+InfluxDB-Python is a client for interacting with InfluxDB.
 endef
 
 define Build/Compile
