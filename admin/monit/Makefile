@@ -86,6 +86,7 @@ define Package/monit/install
 	$(INSTALL_BIN) ./files/monit.init $(1)/etc/init.d/monit
 	$(INSTALL_DIR) $(1)/usr/bin
 	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/monit $(1)/usr/bin/
+	sed -i '/include/s/^#//g' $(1)/etc/monitrc
 endef
 
 Package/monit-nossl/conffiles = $(Package/monit/conffiles)
