@@ -14,6 +14,7 @@ endef
 
 define Package/python3-pip/install
 	$(INSTALL_DIR) $(1)/usr/bin $(1)/usr/lib/python$(PYTHON3_VERSION)/site-packages
+	$(LN) $(PKG_BUILD_DIR)/install-pip/lib/python3.7 $(PKG_BUILD_DIR)/install-pip/lib/python$(PYTHON3_VERSION)
 	# Adjust shebang to proper python location on target
 	sed "1s@.*@#\!/usr/bin/python$(PYTHON3_VERSION)@" -i $(PKG_BUILD_DIR)/install-pip/bin/*
 	$(CP) $(PKG_BUILD_DIR)/install-pip/bin/pip3* $(1)/usr/bin
