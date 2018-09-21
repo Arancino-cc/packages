@@ -1,0 +1,12 @@
+Index: connexion-1.5.2/setup.py
+===================================================================
+--- connexion-1.5.2.orig/setup.py
++++ connexion-1.5.2/setup.py
+@@ -101,7 +101,6 @@ setup(
+     url='https://github.com/zalando/connexion',
+     keywords='openapi oai swagger rest api oauth flask microservice framework',
+     license='Apache License Version 2.0',
+-    setup_requires=['flake8'],
+     install_requires=install_requires + [flask_require],
+     tests_require=tests_require,
+     extras_require={
