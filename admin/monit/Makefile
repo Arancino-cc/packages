@@ -9,7 +9,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=monit
 PKG_VERSION:=5.24.0
-PKG_RELEASE:=1
+PKG_RELEASE:=2
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_HASH:=754d1f0e165e5a26d4639a6a83f44ccf839e381f2622e0946d5302fa1f2d2414
@@ -87,6 +87,17 @@ define Package/monit/install
 	$(INSTALL_DIR) $(1)/usr/bin
 	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/monit $(1)/usr/bin/
 	sed -i '/include/s/^#//g' $(1)/etc/monitrc
+endef
+
+define Package/monit/postinst
+#!/bin/sh
+
+# if on buildroot, make a uci-defaults script which will delete the startup script automatically created
+if [ -n "$${IPKG_INSTROOT}" ]; then
+        echo "Creating uci-default script to disable connectivityservice in factory image"
+        echo "rm -f /etc/rc.d/S60monit" > $${IPKG_INSTROOT}/etc/uci-defaults/monit.disable
+fi
+
 endef
 
 Package/monit-nossl/conffiles = $(Package/monit/conffiles)
