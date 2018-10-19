@@ -8,20 +8,21 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=apsw
-PKG_VERSION:=3.9.2
+PKG_VERSION:=3.24.0
 PKG_RELEASE:=1
 PKG_LICENSE:=BSD-2-Clause
 
-PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION)-r1.tar.gz
-PKG_SOURCE_URL:=https://files.pythonhosted.org/packages/b5/a1/3de5a2d35fc34939672f4e1bd7d68cca359a31b76926f00d95f434c63aaa
-PKG_MD5SUM:=dab96fd164dde9e59f7f27228291498217fa0e74048e2c08c7059d7e39589270
+PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION)-r1.zip
+#PKG_SOURCE_URL:=https://files.pythonhosted.org/packages/b5/a1/3de5a2d35fc34939672f4e1bd7d68cca359a31b76926f00d95f434c63aaa
+PKG_SOURCE_URL:=https://github.com/rogerbinns/apsw/releases/download/$(PKG_VERSION)-r1/
+PKG_MD5SUM:=0ad33cd6f7e556a377bfb45a2549167dfb3b910cbf3c0269791dd11c1440c2a8
 #PKG_BUILD_DEPENDS:=libcap
-
-PKG_UNPACK=$(HOST_TAR) -C $(PKG_BUILD_DIR) --strip-components=1 -xzf $(DL_DIR)/$(PKG_SOURCE)
-HOST_UNPACK=$(HOST_TAR) -C $(HOST_BUILD_DIR) --strip-components=1 -xzf $(DL_DIR)/$(PKG_SOURCE)
 
 include $(INCLUDE_DIR)/package.mk
 include $(TOPDIR)/feeds/packages/lang/python/python3-package.mk
+
+PKG_UNPACK:=unzip -q -d $(PKG_BUILD_DIR) $(DL_DIR)/$(PKG_SOURCE); mv $(PKG_BUILD_DIR)/$(PKG_NAME)-$(PKG_VERSION)-r1/* $(PKG_BUILD_DIR); rm -rf $(PKG_BUILD_DIR)/$(PKG_NAME)-$(PKG_VERSION)-r1
+HOST_UNPACK:=unzip -q -d $(PKG_BUILD_DIR) $(DL_DIR)/$(PKG_SOURCE); 
 
 
 define Package/python3-$(PKG_NAME)
