@@ -9,7 +9,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=monit
 PKG_VERSION:=5.24.0
-PKG_RELEASE:=2
+PKG_RELEASE:=3
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_HASH:=754d1f0e165e5a26d4639a6a83f44ccf839e381f2622e0946d5302fa1f2d2414
@@ -86,7 +86,10 @@ define Package/monit/install
 	$(INSTALL_BIN) ./files/monit.init $(1)/etc/init.d/monit
 	$(INSTALL_DIR) $(1)/usr/bin
 	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/monit $(1)/usr/bin/
+	# enable script on monit.d directory
 	sed -i '/include/s/^#//g' $(1)/etc/monitrc
+	# enable a start dealy of 240 sec
+	sed -i '/delay/s/^#//g' /etc/monitrc
 endef
 
 define Package/monit/postinst
