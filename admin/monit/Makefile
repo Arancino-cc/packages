@@ -89,7 +89,7 @@ define Package/monit/install
 	# enable script on monit.d directory
 	sed -i '/include/s/^#//g' $(1)/etc/monitrc
 	# enable a start dealy of 240 sec
-	sed -i '/delay/s/^#//g' /etc/monitrc
+	sed -i '/delay/s/^#//g' $(1)/etc/monitrc
 endef
 
 define Package/monit/postinst
