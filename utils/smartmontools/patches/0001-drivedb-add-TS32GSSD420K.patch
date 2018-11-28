@@ -1,0 +1,34 @@
+From 221ce3ca62fa14020f479b3cd4c46638fb39dd62 Mon Sep 17 00:00:00 2001
+From: Gerlando Falauto <gerlando.falauto@st.com>
+Date: Fri, 2 Nov 2018 10:09:18 +0100
+Subject: [PATCH] drivedb: add TS32GSSD420K
+
+for our projects we plan to use SSDs from Transcend,
+particularly the TS32GSSD420K.
+This is not supported of the box by smartmontools
+(in terms of decoding the reported entries),
+but it looks identical to e.g. TS32GSSD420I.
+So we forcibly add it to the list of supported devices.
+
+See https://github.com/smartmontools/smartmontools/issues/20
+---
+ !!! WARNING: this file was manually patched to strip smartmontools/ component !!!
+ smartmontools/drivedb.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivedb.h b/drivedb.h
+index 8eb4820..cdad897 100644
+--- a/drivedb.h
++++ b/drivedb.h
+@@ -1709,7 +1709,7 @@ const drive_settings builtin_knowndrives[] = {
+     "CT(120|250|500|1000)BX100SSD1|" // Crucial BX100, tested with CT250BX100SSD1/MU02,
+       // CT500BX100SSD1/MU02, CT1000BX100SSD1/MU02
+     "CT(240|480|960)BX200SSD1|" // Crucial BX200 Solid State Drive, tested with CT480BX200SSD1/MU02.6
+-    "TS((16|32|64|128|256|512)G|1T)(SSD|MSA)(370S?|420I?)|" // Transcend SSD370/420 SATA/mSATA, TS6500,
++    "TS((16|32|64|128|256|512)G|1T)(SSD|MSA)(370S?|420(I|K)?)|" // Transcend SSD370/420 SATA/mSATA, TS6500,
+       // tested with TS32GMSA370/20140402, TS16GMSA370/20140516, TS64GSSD370/20140516,
+       // TS256GSSD370/N0815B, TS256GSSD370S/N1114H, TS512GSSD370S/N1114H, TS32GSSD420I/N1114H
+       // TS256GMTS400
+-- 
+2.7.4
+
