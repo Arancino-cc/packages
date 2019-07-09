@@ -9,7 +9,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=monit
 PKG_VERSION:=5.24.0
-PKG_RELEASE:=3
+PKG_RELEASE:=4
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_HASH:=754d1f0e165e5a26d4639a6a83f44ccf839e381f2622e0946d5302fa1f2d2414
@@ -90,6 +90,14 @@ define Package/monit/install
 	sed -i '/include/s/^#//g' $(1)/etc/monitrc
 	# enable a start dealy of 240 sec
 	sed -i '/delay/s/^#//g' $(1)/etc/monitrc
+	# write .monit.id and .monit.state in /var/run
+	sed -i 's/# set idfile \/var\/.monit.id/# set idfile \/var\/.monit.id\nset idfile \/var\/run\/.monit.id/g' $(1)/etc/monitrc
+	sed -i 's/# set statefile \/var\/.monit.state/# set statefile \/var\/.monit.state\nset statefile \/var\/run\/.monit.state/g' $(1)/etc/monitrc
+	
+	# disable chmod when the operating system is in read-only
+	sed -i 's/chmod 0600 \/etc\/monitrc/#chmod 0600 \/etc\/monitrc/g' $(1)/etc/init.d/monit
+
+
 endef
 
 define Package/monit/postinst
