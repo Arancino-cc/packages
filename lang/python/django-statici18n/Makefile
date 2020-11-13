@@ -17,7 +17,7 @@ PKG_SOURCE_URL:=https://pypi.python.org/packages/0a/24/1bed254529fc492ee5daf4cba
 PKG_HASH:=47d30939d52bcbbf1cbfe56b786bc2f2ea874266a8315cb027c061f320c4e2f6
 
 include $(INCLUDE_DIR)/package.mk
-include ../python-package.mk
+$(call include_mk, python-package.mk)
 
 define Package/django-statici18n
   SUBMENU:=Python

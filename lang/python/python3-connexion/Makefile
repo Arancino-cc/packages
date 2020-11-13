@@ -21,8 +21,7 @@ PKG_UNPACK=$(HOST_TAR) -C $(PKG_BUILD_DIR) --strip-components=1 -xzf $(DL_DIR)/$
 HOST_UNPACK=$(HOST_TAR) -C $(HOST_BUILD_DIR) --strip-components=1 -xzf $(DL_DIR)/$(PKG_SOURCE)
 
 include $(INCLUDE_DIR)/package.mk
-include $(TOPDIR)/feeds/packages/lang/python/python3-package.mk
-
+$(call include_mk, python3-package.mk)
 
 define Package/python3-$(PKG_NAME)
   SUBMENU:=Python

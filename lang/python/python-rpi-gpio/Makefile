@@ -16,7 +16,7 @@ PKG_SOURCE_URL:=https://files.pythonhosted.org/packages/af/2f/407b6e4cc8a0bdf434
 PKG_HASH:=a4210ad63bfe844e43995286de0d3950dfacfa0f3799bb9392770ac54a7d2e47
 
 include $(INCLUDE_DIR)/package.mk
-include ../python-package.mk
+$(call include_mk, python-package.mk)
 
 define Package/python-rpi-gpio
   CATEGORY:=Languages

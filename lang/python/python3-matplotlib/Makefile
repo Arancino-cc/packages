@@ -19,8 +19,7 @@ HOST_PYTHON3_PACKAGE_BUILD_DEPENDS:="six numpy dateutil libpng libfreetype six p
 
 
 include $(INCLUDE_DIR)/package.mk
-
-include $(TOPDIR)/feeds/packages/lang/python/python3-package.mk
+$(call include_mk, python3-package.mk)
 
 define Package/python3-$(PKG_NAME)
   SUBMENU:=Python

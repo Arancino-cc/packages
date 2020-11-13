@@ -19,8 +19,7 @@ PKG_BUILD_DEPENDS:=python3-setuptools
 #PKG_UNPACK=$(HOST_TAR) -C $(PKG_BUILD_DIR) --strip-components=1 -xzf $(DL_DIR)/$(PKG_SOURCE)
 
 include $(INCLUDE_DIR)/package.mk
-include ../python-package.mk
-include ../python3-package.mk
+$(call include_mk, python3-package.mk)
 
 define Package/python3-queuelib
 	SECTION:=lang
