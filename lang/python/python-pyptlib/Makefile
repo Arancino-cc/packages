@@ -47,4 +47,3 @@ endef
 
 $(eval $(call PyPackage,python-pyptlib))
 $(eval $(call BuildPackage,python-pyptlib))
-$(eval $(call BuildPackage,python-pyptlib-src))

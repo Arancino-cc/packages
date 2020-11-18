@@ -66,8 +66,6 @@ endef
 
 $(eval $(call PyPackage,python-pyopenssl))
 $(eval $(call BuildPackage,python-pyopenssl))
-$(eval $(call BuildPackage,python-pyopenssl-src))
 
 $(eval $(call Py3Package,python3-pyopenssl))
 $(eval $(call BuildPackage,python3-pyopenssl))
-$(eval $(call BuildPackage,python3-pyopenssl-src))

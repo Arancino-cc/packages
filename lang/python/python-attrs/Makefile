@@ -62,8 +62,6 @@ endef
 
 $(eval $(call PyPackage,python-attrs))
 $(eval $(call BuildPackage,python-attrs))
-$(eval $(call BuildPackage,python-attrs-src))
 
 $(eval $(call Py3Package,python3-attrs))
 $(eval $(call BuildPackage,python3-attrs))
-$(eval $(call BuildPackage,python3-attrs-src))

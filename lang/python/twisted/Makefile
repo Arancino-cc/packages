@@ -61,4 +61,3 @@ endef
 
 $(eval $(call PyPackage,twisted))
 $(eval $(call BuildPackage,twisted))
-$(eval $(call BuildPackage,twisted-src))

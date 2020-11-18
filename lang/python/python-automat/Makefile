@@ -92,8 +92,6 @@ endef
 
 $(eval $(call PyPackage,python-automat))
 $(eval $(call BuildPackage,python-automat))
-$(eval $(call BuildPackage,python-automat-src))
 
 $(eval $(call Py3Package,python3-automat))
 $(eval $(call BuildPackage,python3-automat))
-$(eval $(call BuildPackage,python3-automat-src))

@@ -63,8 +63,6 @@ endef
 
 $(eval $(call PyPackage,python-idna))
 $(eval $(call BuildPackage,python-idna))
-$(eval $(call BuildPackage,python-idna-src))
 
 $(eval $(call Py3Package,python3-idna))
 $(eval $(call BuildPackage,python3-idna))
-$(eval $(call BuildPackage,python3-idna-src))

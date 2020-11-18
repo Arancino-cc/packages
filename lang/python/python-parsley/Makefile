@@ -68,8 +68,6 @@ endef
 
 $(eval $(call PyPackage,python-parsley))
 $(eval $(call BuildPackage,python-parsley))
-$(eval $(call BuildPackage,python-parsley-src))
 
 $(eval $(call Py3Package,python3-parsley))
 $(eval $(call BuildPackage,python3-parsley))
-$(eval $(call BuildPackage,python3-parsley-src))

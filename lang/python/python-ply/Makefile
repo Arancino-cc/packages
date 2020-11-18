@@ -61,8 +61,6 @@ endef
 
 $(eval $(call PyPackage,python-ply))
 $(eval $(call BuildPackage,python-ply))
-$(eval $(call BuildPackage,python-ply-src))
 
 $(eval $(call Py3Package,python3-ply))
 $(eval $(call BuildPackage,python3-ply))
-$(eval $(call BuildPackage,python3-ply-src))

@@ -65,8 +65,6 @@ endef
 
 $(eval $(call PyPackage,python-pyasn1-modules))
 $(eval $(call BuildPackage,python-pyasn1-modules))
-$(eval $(call BuildPackage,python-pyasn1-modules-src))
 
 $(eval $(call Py3Package,python3-pyasn1-modules))
 $(eval $(call BuildPackage,python3-pyasn1-modules))
-$(eval $(call BuildPackage,python3-pyasn1-modules-src))

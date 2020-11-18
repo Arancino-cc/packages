@@ -75,8 +75,6 @@ endef
 
 $(eval $(call PyPackage,python-zope-interface))
 $(eval $(call BuildPackage,python-zope-interface))
-$(eval $(call BuildPackage,python-zope-interface-src))
 
 $(eval $(call Py3Package,python3-zope-interface))
 $(eval $(call BuildPackage,python3-zope-interface))
-$(eval $(call BuildPackage,python3-zope-interface-src))

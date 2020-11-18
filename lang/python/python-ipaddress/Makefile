@@ -45,4 +45,3 @@ endef
 
 $(eval $(call PyPackage,python-ipaddress))
 $(eval $(call BuildPackage,python-ipaddress))
-$(eval $(call BuildPackage,python-ipaddress-src))

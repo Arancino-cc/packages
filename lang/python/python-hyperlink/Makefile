@@ -62,8 +62,6 @@ endef
 
 $(eval $(call PyPackage,python-hyperlink))
 $(eval $(call BuildPackage,python-hyperlink))
-$(eval $(call BuildPackage,python-hyperlink-src))
 
 $(eval $(call Py3Package,python3-hyperlink))
 $(eval $(call BuildPackage,python3-hyperlink))
-$(eval $(call BuildPackage,python3-hyperlink-src))

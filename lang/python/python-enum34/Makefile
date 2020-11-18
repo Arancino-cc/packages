@@ -52,4 +52,3 @@ endef
 
 $(eval $(call PyPackage,python-enum34))
 $(eval $(call BuildPackage,python-enum34))
-$(eval $(call BuildPackage,python-enum34-src))

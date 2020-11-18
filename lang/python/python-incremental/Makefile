@@ -60,8 +60,6 @@ endef
 
 $(eval $(call PyPackage,python-incremental))
 $(eval $(call BuildPackage,python-incremental))
-$(eval $(call BuildPackage,python-incremental-src))
 
 $(eval $(call Py3Package,python3-incremental))
 $(eval $(call BuildPackage,python3-incremental))
-$(eval $(call BuildPackage,python3-incremental-src))

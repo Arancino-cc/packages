@@ -75,8 +75,6 @@ $(eval $(call HostBuild))
 
 $(eval $(call PyPackage,python-six))
 $(eval $(call BuildPackage,python-six))
-$(eval $(call BuildPackage,python-six-src))
 
 $(eval $(call Py3Package,python3-six))
 $(eval $(call BuildPackage,python3-six))
-$(eval $(call BuildPackage,python3-six-src))

@@ -75,8 +75,6 @@ endef
 
 $(eval $(call PyPackage,python-crypto))
 $(eval $(call BuildPackage,python-crypto))
-$(eval $(call BuildPackage,python-crypto-src))
 
 $(eval $(call Py3Package,python3-crypto))
 $(eval $(call BuildPackage,python3-crypto))
-$(eval $(call BuildPackage,python3-crypto-src))

@@ -57,4 +57,3 @@ endef
 
 $(eval $(call PyPackage,python-txsocksx))
 $(eval $(call BuildPackage,python-txsocksx))
-$(eval $(call BuildPackage,python-txsocksx-src))

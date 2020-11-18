@@ -71,8 +71,6 @@ endef
 
 $(eval $(call PyPackage,python-service-identity))
 $(eval $(call BuildPackage,python-service-identity))
-$(eval $(call BuildPackage,python-service-identity-src))
 
 $(eval $(call Py3Package,python3-service-identity))
 $(eval $(call BuildPackage,python3-service-identity))
-$(eval $(call BuildPackage,python3-service-identity-src))

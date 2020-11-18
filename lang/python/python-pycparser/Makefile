@@ -65,8 +65,6 @@ endef
 
 $(eval $(call PyPackage,python-pycparser))
 $(eval $(call BuildPackage,python-pycparser))
-$(eval $(call BuildPackage,python-pycparser-src))
 
 $(eval $(call Py3Package,python3-pycparser))
 $(eval $(call BuildPackage,python3-pycparser))
-$(eval $(call BuildPackage,python3-pycparser-src))

@@ -62,8 +62,6 @@ endef
 
 $(eval $(call PyPackage,python-constantly))
 $(eval $(call BuildPackage,python-constantly))
-$(eval $(call BuildPackage,python-constantly-src))
 
 $(eval $(call Py3Package,python3-constantly))
 $(eval $(call BuildPackage,python3-constantly))
-$(eval $(call BuildPackage,python3-constantly-src))

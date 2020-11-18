@@ -66,8 +66,6 @@ endef
 
 $(eval $(call PyPackage,python-cffi))
 $(eval $(call BuildPackage,python-cffi))
-$(eval $(call BuildPackage,python-cffi-src))
 
 $(eval $(call Py3Package,python3-cffi))
 $(eval $(call BuildPackage,python3-cffi))
-$(eval $(call BuildPackage,python3-cffi-src))
