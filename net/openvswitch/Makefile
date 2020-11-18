@@ -31,8 +31,8 @@ PKG_INSTALL:=1
 PKG_MAINTAINER:=Yousong Zhou <yszhou4tech@gmail.com>
 
 include $(INCLUDE_DIR)/package.mk
-include ../../lang/python/python-host.mk
-include ../../lang/python/python-package.mk
+$(call include_mk, python-host.mk)
+$(call include_mk, python-package.mk)
 
 define Package/openvswitch/Default
   SECTION:=net
