@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=Cython
-PKG_RELEASE:=1
+PKG_RELEASE:=2
 
 PKG_VERSION:=0.29.21
 PKG_SOURCE_URL:=https://files.pythonhosted.org/packages/6c/9f/f501ba9d178aeb1f5bf7da1ad5619b207c90ac235d9859961c11829d0160/
@@ -55,10 +55,10 @@ define Host/Compile
 endef
 
 define Build/InstallDev
-	$(INSTALL_DIR) $(STAGING_DIR)/$(PYTHON_PKG_DIR)
+	$(INSTALL_DIR) $(STAGING_DIR)/$(PYTHON3_PKG_DIR)
 	$(CP) \
-		$(PKG_INSTALL_DIR)$(PYTHON_PKG_DIR)/* \
-		$(STAGING_DIR)/$(PYTHON_PKG_DIR)
+		$(PKG_INSTALL_DIR)$(PYTHON3_PKG_DIR)/* \
+		$(STAGING_DIR)/$(PYTHON3_PKG_DIR)
 endef
 
 $(eval $(call HostBuild))
