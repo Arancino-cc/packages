@@ -19,7 +19,7 @@ PKG_MD5SUM:=0ad33cd6f7e556a377bfb45a2549167dfb3b910cbf3c0269791dd11c1440c2a8
 #PKG_BUILD_DEPENDS:=libcap
 
 include $(INCLUDE_DIR)/package.mk
-include $(TOPDIR)/feeds/packages/lang/python/python3-package.mk
+$(call include_mk, python3-package.mk)
 
 PKG_UNPACK:=unzip -q -d $(PKG_BUILD_DIR) $(DL_DIR)/$(PKG_SOURCE); mv $(PKG_BUILD_DIR)/$(PKG_NAME)-$(PKG_VERSION)-r1/* $(PKG_BUILD_DIR); rm -rf $(PKG_BUILD_DIR)/$(PKG_NAME)-$(PKG_VERSION)-r1
 HOST_UNPACK:=unzip -q -d $(PKG_BUILD_DIR) $(DL_DIR)/$(PKG_SOURCE); 

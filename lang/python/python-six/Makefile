@@ -25,8 +25,8 @@ PKG_MAINTAINER:=Jeffery To <jeffery.to@gmail.com>, Alexandru Ardelean <ardeleana
 
 include $(INCLUDE_DIR)/host-build.mk
 include $(INCLUDE_DIR)/package.mk
-include ../python-package.mk
-include ../python3-package.mk
+$(call include_mk, python-package.mk)
+$(call include_mk, python3-package.mk)
 
 PKG_UNPACK:=$(HOST_TAR) -C $(PKG_BUILD_DIR) --strip-components=1 -xzf $(DL_DIR)/$(PKG_SOURCE)
 HOST_UNPACK:=$(HOST_TAR) -C $(HOST_BUILD_DIR) --strip-components=1 -xzf $(DL_DIR)/$(PKG_SOURCE)
@@ -75,8 +75,6 @@ $(eval $(call HostBuild))
 
 $(eval $(call PyPackage,python-six))
 $(eval $(call BuildPackage,python-six))
-$(eval $(call BuildPackage,python-six-src))
 
 $(eval $(call Py3Package,python3-six))
 $(eval $(call BuildPackage,python3-six))
-$(eval $(call BuildPackage,python3-six-src))

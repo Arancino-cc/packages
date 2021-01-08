@@ -21,8 +21,8 @@ HOST_UNPACK=$(HOST_TAR) -C $(HOST_BUILD_DIR) --strip-components=1 -xzf $(DL_DIR)
 
 include $(INCLUDE_DIR)/host-build.mk
 include $(INCLUDE_DIR)/package.mk
-include $(TOPDIR)/feeds/packages/lang/python/python-host.mk
-include $(TOPDIR)/feeds/packages/lang/python/python3-package.mk
+$(call include_mk, python3-host.mk)
+$(call include_mk, python3-package.mk)
 
 
 define Package/python3-$(PKG_NAME)

@@ -22,7 +22,7 @@ PKG_LICENSE_FILES:=LICENSE
 PKG_MAINTAINER:=Jeffery To <jeffery.to@gmail.com>
 
 include $(INCLUDE_DIR)/package.mk
-include ../python-package.mk
+$(call include_mk, python-package.mk)
 
 PKG_UNPACK:=$(HOST_TAR) -C $(PKG_BUILD_DIR) --strip-components=1 -xzf $(DL_DIR)/$(PKG_SOURCE)
 
@@ -47,4 +47,3 @@ endef
 
 $(eval $(call PyPackage,python-pyptlib))
 $(eval $(call BuildPackage,python-pyptlib))
-$(eval $(call BuildPackage,python-pyptlib-src))

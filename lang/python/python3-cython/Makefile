@@ -8,59 +8,60 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=Cython
-PKG_RELEASE:=1
+PKG_RELEASE:=2
 
-PKG_VERSION:=0.28.2
-PKG_SOURCE_URL:=https://files.pythonhosted.org/packages/79/9d/dea8c5181cdb77d32e20a44dd5346b0e4bac23c4858f2f66ad64bbcf4de8
-PKG_MD5SUM:=634e2f10fc8d026c633cffacb45cd8f4582149fa68e1428124e762dbc566e68a
+PKG_VERSION:=0.29.21
+PKG_SOURCE_URL:=https://files.pythonhosted.org/packages/6c/9f/f501ba9d178aeb1f5bf7da1ad5619b207c90ac235d9859961c11829d0160/
+PKG_MD5SUM:=12c5e45af71dcc6dff28cdcbcbef6f39
 
 PKG_SOURCE:=Cython-$(PKG_VERSION).tar.gz
 PKG_BUILD_DIR:=$(BUILD_DIR)/Cython-$(PKG_VERSION)
-HOST_PKG_BUILD_DIR:=$(BUILD_DIR)/Cython-$(PKG_VERSION)
-
-HOST_PYTHON3_PACKAGE_BUILD_DEPENDS:="dev"
+HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/Cython-$(PKG_VERSION)
 
 include $(INCLUDE_DIR)/host-build.mk
 include $(INCLUDE_DIR)/package.mk
-include $(TOPDIR)/feeds/packages/lang/python/python3-host.mk
-include $(TOPDIR)/feeds/packages/lang/python/python3-package.mk
+$(call include_mk, python3-package.mk)
+$(call include_mk, python3-host.mk)
 
-define Package/python3-$(PKG_NAME)
+PKG_BUILD_DEPENDS:=python3
+
+HOST_PKG_BUILD_DEPENDS:=python3/host
+
+define Package/python3-cython
   SUBMENU:=Python
   SECTION:=lang
   CATEGORY:=Languages
-  TITLE:=python3-numpy
-  URL:=http://www.numpy.org
+  TITLE:=Cython for python3
+  URL:=http://www.pypi.org
   DEPENDS:=+python3
 endef
 
-define Package/python3-$(PKG_NAME)/description
-  NumPy is the fundamental package for scientific computing with Python.
+define Package/python3-cython/description
+	The Cython compiler for writing C extensions for the Python language.
 endef
 
-define PyPackage/python3-$(PKG_NAME)/filespec
+define PyPackage/python3-cython/filespec
 +|$(PYTHON_PKG_DIR)
 endef
 
 define Build/Compile
-	$(call Build/Compile/Py3Mod,,install --prefix=/usr --root=$(PKG_INSTALL_DIR))
+	# <--no-cython-compile> required, otherwise setup.py calls the target-gcc to create so-files which obviously can't be used by <python> on the host system.
+	$(call Build/Compile/Py3Mod,,install --no-cython-compile --prefix=/usr --root=$(PKG_INSTALL_DIR))
 endef
 
 define Host/Compile
-	$(call Build/Compile/HostPy3Mod,,install --prefix="" --root="$(STAGING_DIR_HOSTPKG)")
+	# <--no-cython-compile> required, otherwise setup.py calls the target-gcc to create so-files which obviously can't be used by <python> on the host system.
+	$(call Build/Compile/HostPy3Mod,,install --no-cython-compile --prefix="" --root="$(STAGING_DIR_HOSTPKG)")
 endef
 
 define Build/InstallDev
-	$(INSTALL_DIR) $(STAGING_DIR)/$(PYTHON_PKG_DIR)
+	$(INSTALL_DIR) $(STAGING_DIR)/$(PYTHON3_PKG_DIR)
 	$(CP) \
-		$(PKG_INSTALL_DIR)$(PYTHON_PKG_DIR)/* \
-		$(STAGING_DIR)/$(PYTHON_PKG_DIR)
-endef
-
-define Host/Install
+		$(PKG_INSTALL_DIR)$(PYTHON3_PKG_DIR)/* \
+		$(STAGING_DIR)/$(PYTHON3_PKG_DIR)
 endef
 
 $(eval $(call HostBuild))
 
-$(eval $(call Py3Package,python3-$(PKG_NAME)))
-$(eval $(call BuildPackage,python3-$(PKG_NAME)))
+$(eval $(call Py3Package,python3-cython))
+$(eval $(call BuildPackage,python3-cython))

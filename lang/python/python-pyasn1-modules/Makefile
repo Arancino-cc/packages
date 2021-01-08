@@ -22,8 +22,8 @@ PKG_MAINTAINER:=Jeffery To <jeffery.to@gmail.com>, Alexandru Ardelean <ardeleana
 PKG_BUILD_DIR:=$(BUILD_DIR)/$(BUILD_VARIANT)-pyasn1-modules-$(PKG_VERSION)
 
 include $(INCLUDE_DIR)/package.mk
-include ../python-package.mk
-include ../python3-package.mk
+$(call include_mk, python-package.mk)
+$(call include_mk, python3-package.mk)
 
 PKG_UNPACK:=$(HOST_TAR) -C $(PKG_BUILD_DIR) --strip-components=1 -xzf $(DL_DIR)/$(PKG_SOURCE)
 
@@ -65,8 +65,6 @@ endef
 
 $(eval $(call PyPackage,python-pyasn1-modules))
 $(eval $(call BuildPackage,python-pyasn1-modules))
-$(eval $(call BuildPackage,python-pyasn1-modules-src))
 
 $(eval $(call Py3Package,python3-pyasn1-modules))
 $(eval $(call BuildPackage,python3-pyasn1-modules))
-$(eval $(call BuildPackage,python3-pyasn1-modules-src))

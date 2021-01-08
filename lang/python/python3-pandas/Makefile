@@ -19,8 +19,7 @@ PKG_BUILD_DEPENDS:=python3-setuptools
 PKG_LICENSE:=BSD
 
 include $(INCLUDE_DIR)/package.mk
-include ../python-package.mk
-include ../python3-package.mk
+$(call include_mk, python3-package.mk)
 
 define Package/python3-$(PKG_NAME)
   SUBMENU:=Python

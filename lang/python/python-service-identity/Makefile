@@ -22,8 +22,8 @@ PKG_LICENSE_FILES:=LICENSE
 PKG_MAINTAINER:=Jeffery To <jeffery.to@gmail.com>
 
 include $(INCLUDE_DIR)/package.mk
-include ../python-package.mk
-include ../python3-package.mk
+$(call include_mk, python-package.mk)
+$(call include_mk, python3-package.mk)
 
 PKG_UNPACK:=$(HOST_TAR) -C $(PKG_BUILD_DIR) --strip-components=1 -xzf $(DL_DIR)/$(PKG_SOURCE)
 
@@ -71,8 +71,6 @@ endef
 
 $(eval $(call PyPackage,python-service-identity))
 $(eval $(call BuildPackage,python-service-identity))
-$(eval $(call BuildPackage,python-service-identity-src))
 
 $(eval $(call Py3Package,python3-service-identity))
 $(eval $(call BuildPackage,python3-service-identity))
-$(eval $(call BuildPackage,python3-service-identity-src))
