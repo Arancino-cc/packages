@@ -7,7 +7,7 @@
 
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=python-parsley
+PKG_NAME:=python3-parsley
 PKG_VERSION:=1.3
 PKG_RELEASE:=3
 
@@ -22,27 +22,27 @@ PKG_LICENSE_FILES:=LICENSE
 PKG_MAINTAINER:=Jeffery To <jeffery.to@gmail.com>
 
 include $(INCLUDE_DIR)/package.mk
-$(call include_mk, python-package.mk)
+$(call include_mk, python3-package.mk)
 
 PKG_UNPACK:=$(HOST_TAR) -C $(PKG_BUILD_DIR) --strip-components=1 -xzf $(DL_DIR)/$(PKG_SOURCE)
 
-define Package/python-parsley
+define Package/python3-parsley
   SECTION:=lang
   CATEGORY:=Languages
   SUBMENU:=Python
   URL:=http://launchpad.net/parsley
-  TITLE:=python-parsley
-  DEPENDS:=+PACKAGE_python-parsley:python-light
-  VARIANT:=python
+  TITLE:=python3-parsley
+  DEPENDS:=+PACKAGE_python3-parsley:python3-light
+  VARIANT:=python3
 endef
 
-define Package/python-parsley/description
+define Package/python3-parsley/description
 Parsing and pattern matching made easy.
 endef
 
 define Build/Compile
-	$(call Build/Compile/PyMod,,install --prefix="/usr" --root="$(PKG_INSTALL_DIR)")
+	$(call Build/Compile/Py3Mod,,install --prefix="/usr" --root="$(PKG_INSTALL_DIR)")
 endef
 
-$(eval $(call PyPackage,python-parsley))
-$(eval $(call BuildPackage,python-parsley))
+$(eval $(call Py3Package,python3-parsley))
+$(eval $(call BuildPackage,python3-parsley))
