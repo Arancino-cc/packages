@@ -8,11 +8,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=Cython
-PKG_RELEASE:=2
+PKG_RELEASE:=3
 
-PKG_VERSION:=0.29.21
-PKG_SOURCE_URL:=https://files.pythonhosted.org/packages/6c/9f/f501ba9d178aeb1f5bf7da1ad5619b207c90ac235d9859961c11829d0160/
-PKG_MD5SUM:=12c5e45af71dcc6dff28cdcbcbef6f39
+PKG_VERSION:=0.29.23
+PKG_SOURCE_URL:=https://files.pythonhosted.org/packages/d9/cd/0d2d90b27219c07f68f1c25bcc7b02dd27639d2180add9d4b73e70945869/
+PKG_MD5SUM:=82837814b8d72d353e16bb9344e914b1
 
 PKG_SOURCE:=Cython-$(PKG_VERSION).tar.gz
 PKG_BUILD_DIR:=$(BUILD_DIR)/Cython-$(PKG_VERSION)
