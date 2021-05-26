@@ -1,50 +1,53 @@
 #
-# Copyright (C) 2008-2009 OpenWrt.org
-#
-# This is free software, licensed under the GNU General Public License v2.
-# See /LICENSE for more information.
+# Copyright © 1997-2011 by Secret Labs AB
+# Copyright © 1995-2011 by Fredrik Lundh
+# Copyright © 2016 by Alex Clark and contributors
 #
 
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=Pillow
-PKG_VERSION:=5.3.0
-PKG_RELEASE:=1
-PKG_LICENSE:=BSD-2-Clause
+PKG_NAME:=python3-pillow
+PKG_VERSION:=3.3.1
+PKG_RELEASE=1
+PKG_LICENSE:=CUSTOM
+PKG_LICENSE_FILES:=LICENSE
 
-PKG_SOURCE:=$(PKG_VERSION).zip
-PKG_SOURCE_URL:=https://github.com/python-pillow/Pillow/archive/
-PKG_MD5SUM:=0ac14725ef4444fdb2871a54bcc95fcd6b8807b3
-#PKG_BUILD_DEPENDS:=libcap
+PKG_SOURCE_PROTO:=git
+PKG_SOURCE_URL:=https://github.com/python-pillow/Pillow.git
+PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_VERSION)
+PKG_SOURCE_VERSION:=aab33141f381d5577cdef9033b7fdff79122a10c
+PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION)-$(PKG_SOURCE_VERSION).tar.gz
+PKG_MIRROR_HASH:=e7c36bcf89614337d9abc4d07780da0b346a745be7a9aa55b398fa427549273c
 
 include $(INCLUDE_DIR)/package.mk
 $(call include_mk, python3-package.mk)
 
-PKG_UNPACK:=unzip -q -d $(PKG_BUILD_DIR) $(DL_DIR)/$(PKG_SOURCE); mv $(PKG_BUILD_DIR)/$(PKG_NAME)-$(PKG_VERSION)/* $(PKG_BUILD_DIR); rm -rf $(PKG_BUILD_DIR)/$(PKG_NAME)-$(PKG_VERSION)
-HOST_UNPACK:=unzip -q -d $(PKG_BUILD_DIR) $(DL_DIR)/$(PKG_SOURCE); 
-
-
-define Package/python3-$(PKG_NAME)
-  SUBMENU:=Python
-  SECTION:=lang
-  CATEGORY:=Languages
-  TITLE:=python3-apsw
-  URL:=https://github.com/python-pillow/Pillow
-  DEPENDS:=+python3 +libfreetype +libjpeg +libtiff
+define Package/python3-pillow
+    SUBMENU:=Python
+    SECTION:=lang
+    CATEGORY:=Languages
+    TITLE:=The friendly PIL fork
+    MAINTAINER:=Gergely Kiss <mail.gery@gmail.com>
+    URL:=https://python-pillow.org/
+    DEPENDS:=+python3 +libfreetype +libjpeg +zlib +libtiff
 endef
 
-define Package/python3-$(PKG_NAME)/description
-The friendly PIL fork (Python Imaging Library) https://python-pillow.org
+define Package/python3-pillow/description
+    The friendly PIL fork
 endef
 
 define Build/Compile
 	$(call Build/Compile/Py3Mod,,install --prefix=/usr --root=$(PKG_INSTALL_DIR))
 endef
 
-define Package/python3-$(PKG_NAME)/install
-	$(INSTALL_DIR) $(1)/$(PYTHON3_PKG_DIR)
-	$(CP) $(PKG_INSTALL_DIR)$(PYTHON3_PKG_DIR)/* $(1)$(PYTHON3_PKG_DIR)/
-	$(CP) $(PKG_INSTALL_DIR)/* $(1)/
+define Package/python3-pillow/install
+	$(INSTALL_DIR) $(1)$(PYTHON3_PKG_DIR)
+	$(INSTALL_DIR) $(1)/usr/bin
+	$(CP) \
+		$(PKG_INSTALL_DIR)$(PYTHON3_PKG_DIR)/* \
+		$(1)$(PYTHON3_PKG_DIR)/
+	$(CP) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin
+	$(CP) $(PKG_BUILD_DIR)/LICENSE $(1)$(PYTHON3_PKG_DIR)/PIL/
 endef
 
-$(eval $(call BuildPackage,python3-$(PKG_NAME)))
+$(eval $(call BuildPackage,python3-pillow))
