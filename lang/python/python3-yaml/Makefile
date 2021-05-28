@@ -23,23 +23,24 @@ PKG_BUILD_DIR:=$(BUILD_DIR)/$(BUILD_VARIANT)-$(PKG_NAME)-$(PKG_VERSION)
 PKG_UNPACK=$(HOST_TAR) -C $(PKG_BUILD_DIR) --strip-components=1 -xzf $(DL_DIR)/$(PKG_SOURCE)
 
 include $(INCLUDE_DIR)/package.mk
-$(call include_mk, python-package.mk)
+$(call include_mk, python3-package.mk)
 
-define Package/python-yaml
+define Package/python3-yaml
   SUBMENU:=Python
   SECTION:=lang
   CATEGORY:=Languages
   URL:=http://pyyaml.org/wiki/PyYAML
-  TITLE:=YAML parser and emitter for Python
-  DEPENDS+=+libyaml +PACKAGE_python-yaml:python-light +PACKAGE_python-yaml:python-codecs
-  VARIANT:=python
+  DEPENDS:=+libyaml
+  TITLE:=YAML parser and emitter for Python3
+  DEPENDS+=+PACKAGE_python3-yaml:python3-light +PACKAGE_python3-yaml:python3-codecs
+  VARIANT:=python3
 endef
 
 define Build/Compile
-	$(call Build/Compile/PyMod,,\
+	$(call Build/Compile/Py3Mod,,\
 		--with-libyaml install --prefix="$(PKG_INSTALL_DIR)/usr" \
 	)
 endef
 
-$(eval $(call PyPackage,python-yaml))
-$(eval $(call BuildPackage,python-yaml))
+$(eval $(call Py3Package,python3-yaml))
+$(eval $(call BuildPackage,python3-yaml))

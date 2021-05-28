@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 include $(INCLUDE_DIR)/kernel.mk
 
-PKG_NAME:=python-evdev
+PKG_NAME:=python3-evdev
 PKG_VERSION:=0.7.0
 PKG_RELEASE:=1
 
@@ -22,32 +22,32 @@ PKG_HASH:=57edafc469a414f58b51af1bfb9ee2babb9f626dd2df530d71c1176871850aa1
 PKG_BUILD_DIR:=$(BUILD_DIR)/$(BUILD_VARIANT)-evdev-$(PKG_VERSION)
 
 include $(INCLUDE_DIR)/package.mk
-$(call include_mk, python-package.mk)
+$(call include_mk, python3-package.mk)
 
 PKG_UNPACK:=$(HOST_TAR) -C $(PKG_BUILD_DIR) --strip-components=1 -xzf $(DL_DIR)/$(PKG_SOURCE)
 
-define Package/python-evdev
+define Package/python3-evdev
   SUBMENU:=Python
   SECTION:=lang
   CATEGORY:=Languages
   URL:=https://github.com/gvalkov/python-evdev
-  TITLE:=python-evdev
+  TITLE:=python3-evdev
   DEPENDS:= \
-     +PACKAGE_python-evdev:python-light \
-     +PACKAGE_python-evdev:python-ctypes
-  VARIANT:=python
+     +PACKAGE_python3-evdev:python3-light \
+     +PACKAGE_python3-evdev:python3-ctypes
+  VARIANT:=python3
 endef
 
-define Package/python-evdev/description
+define Package/python3-evdev/description
 	Bindings to the Linux input handling subsystem
 endef
 
 define Build/Compile
-	$(call Build/Compile/PyMod,, build \
+	$(call Build/Compile/Py3Mod,, build \
 		build_ecodes  --evdev-headers="$(LINUX_DIR)/include/uapi/linux/input.h:$(LINUX_DIR)/include/uapi/linux/input-event-codes.h" \
 		build_ext \
 		install --root="$(PKG_INSTALL_DIR)" --prefix="/usr")
 endef
 
-$(eval $(call PyPackage,python-evdev))
-$(eval $(call BuildPackage,python-evdev))
+$(eval $(call Py3Package,python3-evdev))
+$(eval $(call BuildPackage,python3-evdev))
