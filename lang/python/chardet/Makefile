@@ -9,7 +9,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=chardet
 PKG_VERSION:=3.0.4
-PKG_RELEASE:=1
+PKG_RELEASE:=2
 PKG_LICENSE:=LGPL-2.1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
@@ -26,7 +26,7 @@ define Package/chardet
   MAINTAINER:=Gergely Kiss <mail.gery@gmail.com>
   TITLE:=Universal encoding detector for Python 2 and 3
   URL:=https://github.com/chardet/chardet
-  DEPENDS:=+python
+  DEPENDS:=+python +python-setuptools
 endef
 
 define Package/chardet/description
