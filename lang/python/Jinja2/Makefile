@@ -6,7 +6,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=Jinja2
 PKG_VERSION:=2.9.6
-PKG_RELEASE:=1
+PKG_RELEASE:=2
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://pypi.python.org/packages/90/61/f820ff0076a2599dd39406dcb858ecb239438c02ce706c8e91131ab9c7f1/
@@ -28,7 +28,7 @@ define Package/python3-jinja2
   SUBMENU:=Python
   URL:=http://jinja.pocoo.org/
   TITLE:=python3-jinja2
-  DEPENDS:=+python3-light
+  DEPENDS:=+python3-light +python3-setuptools
   VARIANT:=python3
 endef
 
@@ -36,6 +36,10 @@ define Package/python3-jinja2/description
 Jinja2 is a full featured template engine for Python. It has full
 unicode support, an optional integrated sandboxed execution
 environment, widely used and BSD licensed.
+endef
+
+define Build/Compile
+	$(call Build/Compile/Py3Mod,,install --prefix=/usr --root=$(PKG_INSTALL_DIR))
 endef
 
 $(eval $(call Py3Package,python3-jinja2))

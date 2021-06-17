@@ -20,35 +20,35 @@ PKG_LICENSE_FILES:=COPYRIGHT
 PKG_MAINTAINER:=Jeffery To <jeffery.to@gmail.com>
 
 include $(INCLUDE_DIR)/package.mk
-$(call include_mk, python-package.mk)
+$(call include_mk, python3-package.mk)
 
-define Package/python-crypto
+define Package/python3-crypto
 	SECTION:=lang-python
 	CATEGORY:=Languages
 	SUBMENU:=Python
 	TITLE:=python-crypto
 	URL:=http://www.pycrypto.org/
-	DEPENDS:=+python +libgmp
+	DEPENDS:=+python3 +libgmp
 endef
 
-define Package/python-crypto/description
+define Package/python3-crypto/description
 A collection of both secure hash functions (such as MD5 and SHA),
 and various encryption algorithms (AES, DES, IDEA, RSA, ElGamal, etc.).
 endef
 
 define Build/Compile
-	$(call Build/Compile/PyMod,,\
+	$(call Build/Compile/Py3Mod,,\
 		install --prefix=/usr --root=$(PKG_INSTALL_DIR),\
 		CONFIG_BIG_ENDIAN="$(CONFIG_BIG_ENDIAN)" \
 	)
 endef
 
-define Package/python-crypto/install
-	$(INSTALL_DIR) $(1)$(PYTHON_PKG_DIR)/
+define Package/python3-crypto/install
+	$(INSTALL_DIR) $(1)$(PYTHON3_PKG_DIR)/
 	$(CP) \
-		$(PKG_INSTALL_DIR)$(PYTHON_PKG_DIR)/* \
-		$(1)$(PYTHON_PKG_DIR)/
+		$(PKG_INSTALL_DIR)$(PYTHON3_PKG_DIR)/* \
+		$(1)$(PYTHON3_PKG_DIR)/
 endef
 
-$(eval $(call PyPackage,python-crypto))
-$(eval $(call BuildPackage,python-crypto))
+$(eval $(call Py3Package,python3-crypto))
+$(eval $(call BuildPackage,python3-crypto))
